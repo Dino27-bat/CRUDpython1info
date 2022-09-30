@@ -26,6 +26,7 @@ def login():
 
     if (usuario.get(nome) != None):
         usuario_2 = usuario.get(nome)
+        usuario_2['KEY'] = nome
         while (tentativas >= 0):
             senha = str(input("Senha: "))
             if (usuario_2['SENHA'] == senha):
@@ -74,7 +75,11 @@ def delete():
     tentativa = int(3)
     while tentativa >= 0:
         if senha == logged['SENHA']:
+            usuario.pop(logged['KEY'])
+            logged = None
             print("Conta Deletada...")
+            print(usuario)
+            break
         else:
             print("Senha incorreta!")
             tentativa -= 1
