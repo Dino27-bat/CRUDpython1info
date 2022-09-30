@@ -25,7 +25,7 @@ def login():
     tentativas = int(3)
 
     if (usuario.get(nome) != None):
-        usuario_2 = usuario[nome]
+        usuario_2 = usuario.get(nome)
         while (tentativas >= 0):
             senha = str(input("Senha: "))
             if (usuario_2['SENHA'] == senha):
@@ -67,7 +67,17 @@ def showInfos():
         "Nome: ", logged['NOME'], 
         "\nTipo de Usúario: ", logged['TYPE_U'])
 
+def delete():
+    global logged
 
+    senha = str(input("Digite sua senha: "))
+    tentativa = int(3)
+    while tentativa >= 0:
+        if senha == logged['SENHA']:
+            print("Conta Deletada...")
+        else:
+            print("Senha incorreta!")
+            tentativa -= 1
 
 def options():
     global logged   
@@ -91,7 +101,6 @@ def options():
             c += 1
         print(linha())
         opc = leiaInt('\033[32mSua Opção: \033[m')
-        
         return opc
 
     # Codigo Principal
@@ -103,7 +112,7 @@ def options():
                 #altern()
                 break
             elif resposta == 2:
-                #delete()
+                delete()
                 break
             elif resposta == 3:
                 showInfos()

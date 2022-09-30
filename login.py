@@ -1,5 +1,3 @@
-usuario = dict({"lucas": {"nome": "lucas", "senha": "espinafre"}})
-
 nome = str(input("Nome: "))
 
 if(usuario.get(nome) != None):
